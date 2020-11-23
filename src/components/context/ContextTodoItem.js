@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 import {MdDone, MdDelete} from 'react-icons/md';
-import {useTodoDispatch} from '../TodoContext';
+import {useTodoDispatch} from '../../TodoContext';
 
 const Remove = styled.div`
   display: flex;
@@ -58,7 +58,7 @@ const Text = styled.div`
     `}
 `;
 
-function TodoItem({id, done, text}) {
+function ContextTodoItem({id, done, text}) {
   const dispatch = useTodoDispatch();
   const onToggle = () => dispatch({type: 'TOGGLE', id});
   const onRemove = () => dispatch({type: 'REMOVE', id});
@@ -75,4 +75,4 @@ function TodoItem({id, done, text}) {
   );
 }
 
-export default React.memo(TodoItem);
+export default React.memo(ContextTodoItem);

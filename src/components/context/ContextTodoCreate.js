@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {MdAdd} from 'react-icons/md';
 import styled, {css} from 'styled-components';
-import {useTodoDispatch, useTodoNextId} from '../TodoContext';
+import {useTodoDispatch, useTodoNextId} from '../../TodoContext';
 
 const CircleButton = styled.button`
   background: #38d9a9;
@@ -76,7 +76,7 @@ const Input = styled.input`
   box-sizing: border-box;
 `;
 
-function TodoCreate() {
+function ContextTodoCreate() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
 
@@ -116,4 +116,4 @@ function TodoCreate() {
   );
 }
 
-export default React.memo(TodoCreate);
+export default React.memo(ContextTodoCreate);

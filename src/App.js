@@ -1,8 +1,8 @@
 import {createGlobalStyle} from 'styled-components';
-import TodoCreate from './components/TodoCreate';
-import TodoHead from './components/TodoHead';
-import TodoList from './components/TodoList';
-import TodoTemplate from './components/TodoTemplate';
+import ContextTodoCreate from './components/context/ContextTodoCreate';
+import ContextTodoHead from './components/context/ContextTodoHead';
+import ContextTodoList from './components/context/ContextTodoList';
+import ContextTodoTemplate from './components/context/ContextTodoTemplate';
 import {TodoProvider} from './TodoContext';
 
 const GlobalStyle = createGlobalStyle`
@@ -14,11 +14,11 @@ function App() {
   return (
     <TodoProvider>
       <GlobalStyle />
-      <TodoTemplate>
-        <TodoHead />
-        <TodoList />
-        <TodoCreate />
-      </TodoTemplate>
+      <ContextTodoTemplate>
+        <ContextTodoHead />
+        <ContextTodoList />
+        <ContextTodoCreate />
+      </ContextTodoTemplate>
     </TodoProvider>
   );
 }

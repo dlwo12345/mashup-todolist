@@ -18,8 +18,8 @@ const TodoTemplateBlock = styled.div`
   flex-direction: column;
 `;
 
-function TodoTemplate(props) {
+function ContextTodoTemplate(props) {
   return <TodoTemplateBlock>{props.children}</TodoTemplateBlock>;
 }
 
-export default TodoTemplate;
+export default ContextTodoTemplate;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useTodoState} from '../TodoContext';
+import {useTodoState} from '../../TodoContext';
 
 const TodoHeadBlock = styled.div`
   padding-top: 48px;
@@ -26,7 +26,7 @@ const TodoHeadBlock = styled.div`
   }
 `;
 
-function TodoHead() {
+function ContextTodoHead() {
   const todos = useTodoState();
   const undoneTasks = todos.filter((todo) => !todo.done);
 
@@ -43,4 +43,4 @@ function TodoHead() {
   );
 }
 
-export default TodoHead;
+export default ContextTodoHead;
