@@ -1,25 +1,13 @@
-import {createGlobalStyle} from 'styled-components';
-import ContextTodoCreate from './components/context/ContextTodoCreate';
-import ContextTodoHead from './components/context/ContextTodoHead';
-import ContextTodoList from './components/context/ContextTodoList';
-import ContextTodoTemplate from './components/context/ContextTodoTemplate';
-import {TodoProvider} from './TodoContext';
+import {Route, HashRouter} from 'react-router-dom';
+import Context from './pages/Context';
+import Recoil from './pages/Recoil';
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    background: #e9ecef;
-  }
-`;
 function App() {
   return (
-    <TodoProvider>
-      <GlobalStyle />
-      <ContextTodoTemplate>
-        <ContextTodoHead />
-        <ContextTodoList />
-        <ContextTodoCreate />
-      </ContextTodoTemplate>
-    </TodoProvider>
+    <HashRouter>
+      <Route exact path="/context" component={Context}></Route>
+      <Route exact path="/recoil" component={Recoil}></Route>
+    </HashRouter>
   );
 }
 
