@@ -42,9 +42,12 @@ const TodoDispatchContext = createContext();
 
 export function TodoProvider({children}) {
   const [state, dispatch] = useReducer(todoReducer, initialTodos);
+  const nextId = useRef(5);
   return (
     <TodoStateContext.Provider value={state}>
-      <TodoDispatchContext.Provider value={dispatch}>{children}</TodoDispatchContext.Provider>
+      <TodoDispatchContext.Provider value={dispatch}>
+        <TodoNextIdContext.Provider value={nextId}>{children}</TodoNextIdContext.Provider>
+      </TodoDispatchContext.Provider>
     </TodoStateContext.Provider>
   );
 }
