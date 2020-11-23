@@ -59,3 +59,7 @@ export function useTodoState() {
 export function useTodoDispatch() {
   return useContext(TodoDispatchContext);
 }
+
+export function useTodoNextId() {
+  return useContext(TodoNextIdContext);
+}
