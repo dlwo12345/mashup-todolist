@@ -1,4 +1,4 @@
-import React, {createContext, useReducer} from 'react';
+import React, {createContext, useContext, useReducer} from 'react';
 
 const initialTodos = [
   {
@@ -47,4 +47,12 @@ export function TodoProvider({children}) {
       <TodoDispatchContext.Provider value={dispatch}>{children}</TodoDispatchContext.Provider>
     </TodoStateContext.Provider>
   );
+}
+
+export function useTodoState() {
+  return useContext(TodoStateContext);
+}
+
+export function useTodoDispatch() {
+  return useContext(TodoDispatchContext);
 }
