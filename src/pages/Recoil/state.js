@@ -28,6 +28,19 @@ export const todoState = atom({
   default: initialTodos,
 });
 
+export const nextIdState = atom({
+  key: 'nextIdState',
+  default: initialTodos.length + 1,
+});
+
+export const incrementNextId = selector({
+  key: 'incrementNextId',
+  set: ({get, set}) => {
+    const id = get(nextIdState);
+    set(nextIdState, id + 1);
+  },
+});
+
 export const toggleTodo = selector({
   key: 'toggleTodo',
   set: ({get, set}, id) => {
