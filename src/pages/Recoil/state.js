@@ -28,11 +28,35 @@ export const TodoState = atom({
   default: initialTodos,
 });
 
-// export const CountTodoState = selector({
-//   key: 'CountTodoState',
-//   get: ({get}) => {
-//     const todo = get(TodoState);
-//     return todo.length;
-//     console.log('todo', todo);
-//   },
-// });
+export const ChangeTodoState = selector({
+  key: 'ChangeTodoState',
+  set: ({get, set}, action) => {
+    switch (action.type) {
+      case 'TOGGLE':
+        set(
+          TodoState,
+          get(TodoState).map((todo) => (todo.id === action.id ? {...todo, done: !todo.done} : todo)),
+        );
+        break;
+      case 'REMOVE':
+        set(
+          TodoState,
+          get(TodoState).filter((todo) => todo.id !== action.id),
+        );
+        break;
+      case 'CREATE':
+        const todos = get(TodoState);
+        set(
+          TodoState,
+          todos.concat({
+            id: todos.length + 1,
+            ...action.todo,
+          }),
+        );
+        break;
+
+      default:
+        throw new Error(`Unhandled type: ${action.type}`);
+    }
+  },
+});

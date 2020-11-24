@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {MdAdd} from 'react-icons/md';
+import {useSetRecoilState} from 'recoil';
+import {ChangeTodoState} from '../state';
 import styled, {css} from 'styled-components';
-import {useTodoDispatch, useTodoNextId} from '../../TodoContext';
 
 const CircleButton = styled.button`
   background: #38d9a9;
@@ -80,24 +81,23 @@ function RecoilTodoCreate() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
 
-  const dispatch = useTodoDispatch();
-  const nextId = useTodoNextId();
+  const changeTodoState = useSetRecoilState(ChangeTodoState);
 
   const onToggle = () => setOpen(!open);
   const onChange = (e) => setValue(e.target.value);
+
   const onSubmit = (e) => {
     e.preventDefault(); // 새로고침 방지
-    dispatch({
+    changeTodoState({
       type: 'CREATE',
       todo: {
-        id: nextId.current,
         text: value,
         done: false,
       },
     });
+
     setValue(''); // input 초기화
     setOpen(false); // open 닫기
-    nextId.current += 1;
   };
 
   return (

@@ -1,7 +1,8 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 import {MdDone, MdDelete} from 'react-icons/md';
-import {useTodoDispatch} from '../../TodoContext';
+import {useSetRecoilState} from 'recoil';
+import {ChangeTodoState} from '../state';
 
 const Remove = styled.div`
   display: flex;
@@ -59,9 +60,16 @@ const Text = styled.div`
 `;
 
 function RecoilTodoItem({id, done, text}) {
-  const dispatch = useTodoDispatch();
-  const onToggle = () => dispatch({type: 'TOGGLE', id});
-  const onRemove = () => dispatch({type: 'REMOVE', id});
+  const changeTodoState = useSetRecoilState(ChangeTodoState);
+
+  const onToggle = () => {
+    changeTodoState({type: 'TOGGLE', id});
+  };
+
+  const onRemove = () => {
+    changeTodoState({type: 'REMOVE', id});
+  };
+
   return (
     <TodoItemBlock>
       <CheckCircle done={done} onClick={onToggle}>

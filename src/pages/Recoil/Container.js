@@ -5,6 +5,8 @@ import Nav from '../../components/Nav';
 import {RecoilRoot} from 'recoil';
 import RecoilTodoHead from './components/RecoilTodoHead';
 import RecoilTodoTemplate from './components/RecoilTodoTemplate';
+import RecoilTodoList from './components/RecoilTodoList';
+import RecoilTodoCreate from './components/RecoilTodoCreate';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -19,6 +21,8 @@ export default () => {
       <GlobalStyle />
       <RecoilTodoTemplate>
         <RecoilTodoHead />
+        <RecoilTodoList />
+        <RecoilTodoCreate />
       </RecoilTodoTemplate>
     </RecoilRoot>
   );

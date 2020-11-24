@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import RecoilTodoItem from './RecoilTodoItem';
-import {TodoState} from '../../TodoRecoil';
+import {TodoState} from '../state';
 import {useRecoilValue} from 'recoil';
 
 const TodoListBlock = styled.div`
