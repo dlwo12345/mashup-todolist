@@ -36,7 +36,7 @@ function RecoilTodoHead() {
 
   return (
     <TodoHeadBlock>
-      <h1>{dateString}</h1>
+      <h1>Recoil 상태관리 {dateString}</h1>
       <div className="day">{dayName}</div>
       <div className="tasks-left">할일 {todo.length} 개 남음</div>
     </TodoHeadBlock>

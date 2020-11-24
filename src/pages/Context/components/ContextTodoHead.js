@@ -36,7 +36,7 @@ function ContextTodoHead() {
 
   return (
     <TodoHeadBlock>
-      <h1>{dateString}</h1>
+      <h1>context 상태관리 {dateString}</h1>
       <div className="day">{dayName}</div>
       <div className="tasks-left">할일 {undoneTasks.length}개 남음</div>
     </TodoHeadBlock>
