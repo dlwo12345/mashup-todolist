@@ -63,21 +63,21 @@ function RecoilTodoItem({id, done, text}) {
   const emitToggleTodo = useSetRecoilState(toggleTodo);
   const emitRemoveTodo = useSetRecoilState(removeTodo);
 
-  const onToggle = () => {
+  const handleToggle = () => {
     emitToggleTodo(id);
   };
 
-  const onRemove = () => {
+  const handleRemove = () => {
     emitRemoveTodo(id);
   };
 
   return (
     <TodoItemBlock>
-      <CheckCircle done={done} onClick={onToggle}>
+      <CheckCircle done={done} onClick={handleToggle}>
         {done && <MdDone />}
       </CheckCircle>
       <Text done={done}>{text}</Text>
-      <Remove onClick={onRemove}>
+      <Remove onClick={handleRemove}>
         <MdDelete />
       </Remove>
     </TodoItemBlock>

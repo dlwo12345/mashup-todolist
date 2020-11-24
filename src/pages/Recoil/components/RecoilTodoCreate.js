@@ -82,10 +82,10 @@ function RecoilTodoCreate() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
 
-  const onToggle = () => setOpen(!open);
-  const onChange = (e) => setValue(e.target.value);
+  const handleToggle = () => setOpen(!open);
+  const handleChange = (e) => setValue(e.target.value);
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault(); // 새로고침 방지
     emitCreateTodo({
       text: value,
@@ -100,12 +100,12 @@ function RecoilTodoCreate() {
     <>
       {open && (
         <InsertFormPositioner>
-          <InsertForm onSubmit={onSubmit}>
-            <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" onChange={onChange} value={value} />
+          <InsertForm onSubmit={handleSubmit}>
+            <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" onChange={handleChange} value={value} />
           </InsertForm>
         </InsertFormPositioner>
       )}
-      <CircleButton onClick={onToggle} open={open}>
+      <CircleButton onClick={handleToggle} open={open}>
         <MdAdd />
       </CircleButton>
     </>
