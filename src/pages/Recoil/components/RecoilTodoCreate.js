@@ -78,10 +78,9 @@ const Input = styled.input`
 `;
 
 function RecoilTodoCreate() {
+  const changeTodoState = useSetRecoilState(ChangeTodoState);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
-
-  const changeTodoState = useSetRecoilState(ChangeTodoState);
 
   const onToggle = () => setOpen(!open);
   const onChange = (e) => setValue(e.target.value);
