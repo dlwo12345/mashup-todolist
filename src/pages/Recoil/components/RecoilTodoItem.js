@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {css} from 'styled-components';
 import {MdDone, MdDelete} from 'react-icons/md';
 import {useSetRecoilState} from 'recoil';
-import {ChangeTodoState} from '../state';
+import {toggleTodo, removeTodo} from '../state';
 
 const Remove = styled.div`
   display: flex;
@@ -60,14 +60,15 @@ const Text = styled.div`
 `;
 
 function RecoilTodoItem({id, done, text}) {
-  const changeTodoState = useSetRecoilState(ChangeTodoState);
+  const emitToggleTodo = useSetRecoilState(toggleTodo);
+  const emitRemoveTodo = useSetRecoilState(removeTodo);
 
   const onToggle = () => {
-    changeTodoState({type: 'TOGGLE', id});
+    emitToggleTodo(id);
   };
 
   const onRemove = () => {
-    changeTodoState({type: 'REMOVE', id});
+    emitRemoveTodo(id);
   };
 
   return (

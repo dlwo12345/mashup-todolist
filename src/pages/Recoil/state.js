@@ -1,4 +1,4 @@
-import {atom, selector, useRecoilState} from 'recoil';
+import {atom, selector} from 'recoil';
 
 const initialTodos = [
   {
@@ -23,40 +23,41 @@ const initialTodos = [
   },
 ];
 
-export const TodoState = atom({
-  key: 'TodoState',
+export const todoState = atom({
+  key: 'todoState',
   default: initialTodos,
 });
 
-export const ChangeTodoState = selector({
-  key: 'ChangeTodoState',
-  set: ({get, set}, action) => {
-    switch (action.type) {
-      case 'TOGGLE':
-        set(
-          TodoState,
-          get(TodoState).map((todo) => (todo.id === action.id ? {...todo, done: !todo.done} : todo)),
-        );
-        break;
-      case 'REMOVE':
-        set(
-          TodoState,
-          get(TodoState).filter((todo) => todo.id !== action.id),
-        );
-        break;
-      case 'CREATE':
-        const todos = get(TodoState);
-        set(
-          TodoState,
-          todos.concat({
-            id: todos.length + 1,
-            ...action.todo,
-          }),
-        );
-        break;
+export const toggleTodo = selector({
+  key: 'toggleTodo',
+  set: ({get, set}, id) => {
+    set(
+      todoState,
+      get(todoState).map((todo) => (todo.id === id ? {...todo, done: !todo.done} : todo)),
+    );
+  },
+});
 
-      default:
-        throw new Error(`Unhandled type: ${action.type}`);
-    }
+export const removeTodo = selector({
+  key: 'removeTodo',
+  set: ({get, set}, id) => {
+    set(
+      todoState,
+      get(todoState).filter((todo) => todo.id !== id),
+    );
+  },
+});
+
+export const createTodo = selector({
+  key: 'createTodo',
+  set: ({get, set}, todo) => {
+    const todos = get(todoState);
+    set(
+      todoState,
+      todos.concat({
+        id: todos.length + 1,
+        ...todo,
+      }),
+    );
   },
 });

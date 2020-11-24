@@ -1,6 +1,6 @@
 import React from 'react';
 import {useRecoilValue} from 'recoil';
-import {TodoState} from '../state';
+import {todoState} from '../state';
 import styled from 'styled-components';
 
 const TodoHeadBlock = styled.div`
@@ -28,7 +28,7 @@ const TodoHeadBlock = styled.div`
 `;
 
 function RecoilTodoHead() {
-  const todos = useRecoilValue(TodoState);
+  const todos = useRecoilValue(todoState);
   const undoneTasks = todos.filter((todo) => !todo.done);
 
   const today = new Date();
