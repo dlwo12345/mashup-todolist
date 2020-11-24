@@ -1,6 +1,6 @@
 import {Route, HashRouter, Redirect} from 'react-router-dom';
-import Context from './pages/Context';
-import Recoil from './pages/Recoil';
+import Context from './pages/Context/Container';
+import Recoil from './pages/Recoil/Container';
 
 function App() {
   return (

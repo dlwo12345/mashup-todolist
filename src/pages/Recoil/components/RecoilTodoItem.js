@@ -58,7 +58,7 @@ const Text = styled.div`
     `}
 `;
 
-function ContextTodoItem({id, done, text}) {
+function RecoilTodoItem({id, done, text}) {
   const dispatch = useTodoDispatch();
   const onToggle = () => dispatch({type: 'TOGGLE', id});
   const onRemove = () => dispatch({type: 'REMOVE', id});
@@ -75,4 +75,4 @@ function ContextTodoItem({id, done, text}) {
   );
 }
 
-export default React.memo(ContextTodoItem);
+export default React.memo(RecoilTodoItem);

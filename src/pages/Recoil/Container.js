@@ -1,10 +1,10 @@
 import React from 'react';
 import {createGlobalStyle} from 'styled-components';
-import Nav from '../components/Nav';
+import Nav from '../../components/Nav';
 
 import {RecoilRoot} from 'recoil';
-import RecoilTodoHead from '../components/recoil/RecoilTodoHead';
-import RecoilTodoTemplate from '../components/recoil/RecoilTodoTemplate';
+import RecoilTodoHead from './components/RecoilTodoHead';
+import RecoilTodoTemplate from './components/RecoilTodoTemplate';
 
 const GlobalStyle = createGlobalStyle`
   body {

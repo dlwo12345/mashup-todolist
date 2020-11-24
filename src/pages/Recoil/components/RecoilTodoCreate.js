@@ -76,7 +76,7 @@ const Input = styled.input`
   box-sizing: border-box;
 `;
 
-function ContextTodoCreate() {
+function RecoilTodoCreate() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
 
@@ -116,4 +116,4 @@ function ContextTodoCreate() {
   );
 }
 
-export default React.memo(ContextTodoCreate);
+export default React.memo(RecoilTodoCreate);

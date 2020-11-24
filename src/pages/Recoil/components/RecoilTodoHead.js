@@ -1,6 +1,7 @@
 import React from 'react';
+import {useRecoilValue} from 'recoil';
+import {TodoState} from '../state';
 import styled from 'styled-components';
-import {useTodoState} from '../../TodoContext';
 
 const TodoHeadBlock = styled.div`
   padding-top: 48px;
@@ -26,9 +27,8 @@ const TodoHeadBlock = styled.div`
   }
 `;
 
-function ContextTodoHead() {
-  const todos = useTodoState();
-  const undoneTasks = todos.filter((todo) => !todo.done);
+function RecoilTodoHead() {
+  const todo = useRecoilValue(TodoState);
 
   const today = new Date();
   const dateString = today.toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'});
@@ -38,9 +38,9 @@ function ContextTodoHead() {
     <TodoHeadBlock>
       <h1>{dateString}</h1>
       <div className="day">{dayName}</div>
-      <div className="tasks-left">할일 {undoneTasks.length}개 남음</div>
+      <div className="tasks-left">할일 {todo.length} 개 남음</div>
     </TodoHeadBlock>
   );
 }
 
-export default ContextTodoHead;
+export default RecoilTodoHead;
