@@ -103,7 +103,7 @@ function RecoilTodoCreate() {
       setValue(''); // input 초기화
       setOpen(false); // open 닫기
     },
-    [value, nextId],
+    [emitCreateTodo, emitIncrementNextId, value, nextId],
   );
 
   return (
