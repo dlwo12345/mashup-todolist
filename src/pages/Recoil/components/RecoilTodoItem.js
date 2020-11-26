@@ -65,11 +65,11 @@ function RecoilTodoItem({id, done, text}) {
 
   const handleToggle = useCallback(() => {
     emitToggleTodo(id);
-  });
+  }, []);
 
   const handleRemove = useCallback(() => {
     emitRemoveTodo(id);
-  });
+  }, []);
 
   return (
     <TodoItemBlock>

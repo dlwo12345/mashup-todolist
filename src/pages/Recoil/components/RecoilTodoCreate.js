@@ -84,21 +84,27 @@ function RecoilTodoCreate() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
 
-  const handleToggle = useCallback(() => setOpen(!open));
-  const handleChange = useCallback((e) => setValue(e.target.value));
+  const handleToggle = useCallback(() => setOpen(!open), [open]);
+  const handleChange = useCallback((e) => setValue(e.target.value), []);
 
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault(); // 새로고침 방지
-    emitCreateTodo({
-      id: nextId,
-      text: value,
-      done: false,
-    });
-    emitIncrementNextId(); // nextId 하나 증가
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault(); // 새로고침 방지
+      emitCreateTodo(
+        {
+          id: nextId,
+          text: value,
+          done: false,
+        },
+        [],
+      );
+      emitIncrementNextId(); // nextId 하나 증가
 
-    setValue(''); // input 초기화
-    setOpen(false); // open 닫기
-  });
+      setValue(''); // input 초기화
+      setOpen(false); // open 닫기
+    },
+    [value, nextId],
+  );
 
   return (
     <>
