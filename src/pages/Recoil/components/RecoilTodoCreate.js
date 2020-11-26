@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {MdAdd} from 'react-icons/md';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
 import {createTodo, incrementNextId, nextIdState} from '../state';
@@ -84,10 +84,10 @@ function RecoilTodoCreate() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
 
-  const handleToggle = () => setOpen(!open);
-  const handleChange = (e) => setValue(e.target.value);
+  const handleToggle = useCallback(() => setOpen(!open));
+  const handleChange = useCallback((e) => setValue(e.target.value));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault(); // 새로고침 방지
     emitCreateTodo({
       id: nextId,
@@ -98,7 +98,7 @@ function RecoilTodoCreate() {
 
     setValue(''); // input 초기화
     setOpen(false); // open 닫기
-  };
+  });
 
   return (
     <>

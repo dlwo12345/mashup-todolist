@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import styled, {css} from 'styled-components';
 import {MdDone, MdDelete} from 'react-icons/md';
 import {useSetRecoilState} from 'recoil';
@@ -63,13 +63,13 @@ function RecoilTodoItem({id, done, text}) {
   const emitToggleTodo = useSetRecoilState(toggleTodo);
   const emitRemoveTodo = useSetRecoilState(removeTodo);
 
-  const handleToggle = () => {
+  const handleToggle = useCallback(() => {
     emitToggleTodo(id);
-  };
+  });
 
-  const handleRemove = () => {
+  const handleRemove = useCallback(() => {
     emitRemoveTodo(id);
-  };
+  });
 
   return (
     <TodoItemBlock>
