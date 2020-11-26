@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 
-export default () => (
+const nav = () => (
   <ul>
     <li>
       <NavLink activeStyle={{color: 'red'}} to={`/context`}>
@@ -15,3 +15,5 @@ export default () => (
     </li>
   </ul>
 );
+
+export default nav;

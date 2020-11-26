@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default () => {
+const Container = () => {
   return (
     <>
       <Nav />
@@ -28,3 +28,5 @@ export default () => {
     </>
   );
 };
+
+export default Container;

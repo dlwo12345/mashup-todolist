@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default () => {
+const Container = () => {
   return (
     <RecoilRoot>
       <Nav />
@@ -27,3 +27,5 @@ export default () => {
     </RecoilRoot>
   );
 };
+
+export default Container;
