@@ -23,4 +23,4 @@ function RecoilTodoList() {
   );
 }
 
-export default RecoilTodoList;
+export default React.memo(RecoilTodoList);

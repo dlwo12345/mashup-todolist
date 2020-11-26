@@ -44,4 +44,4 @@ function RecoilTodoHead() {
   );
 }
 
-export default RecoilTodoHead;
+export default React.memo(RecoilTodoHead);

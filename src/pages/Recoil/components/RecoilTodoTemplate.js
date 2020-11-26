@@ -22,4 +22,4 @@ function RecoilTodoTemplate(props) {
   return <TodoTemplateBlock>{props.children}</TodoTemplateBlock>;
 }
 
-export default RecoilTodoTemplate;
+export default React.memo(RecoilTodoTemplate);
