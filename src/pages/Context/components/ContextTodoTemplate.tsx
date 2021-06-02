@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const TodoTemplateBlock = styled.div`
   width: 512px;
@@ -18,7 +18,7 @@ const TodoTemplateBlock = styled.div`
   flex-direction: column;
 `;
 
-function ContextTodoTemplate(props) {
+function ContextTodoTemplate(props: any) {
   return <TodoTemplateBlock>{props.children}</TodoTemplateBlock>;
 }
 

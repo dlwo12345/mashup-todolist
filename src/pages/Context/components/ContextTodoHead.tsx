@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import {useTodoState} from '../ContextTodoService';
+import React from "react";
+import styled from "styled-components";
+import { useTodoState } from "../ContextTodoService";
 
 const TodoHeadBlock = styled.div`
   padding-top: 48px;
@@ -28,11 +28,15 @@ const TodoHeadBlock = styled.div`
 
 function ContextTodoHead() {
   const todos = useTodoState();
-  const undoneTasks = todos.filter((todo) => !todo.done);
+  const undoneTasks = todos.filter((todo: any) => !todo.done);
 
   const today = new Date();
-  const dateString = today.toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'});
-  const dayName = today.toLocaleDateString('ko-KR', {weekday: 'long'});
+  const dateString = today.toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const dayName = today.toLocaleDateString("ko-KR", { weekday: "long" });
 
   return (
     <TodoHeadBlock>

@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import {MdAdd} from 'react-icons/md';
-import styled, {css} from 'styled-components';
-import {useTodoDispatch, useTodoNextId} from '../ContextTodoService';
+import React, { useState } from "react";
+import { MdAdd } from "react-icons/md";
+import styled, { css } from "styled-components";
+import { useTodoDispatch, useTodoNextId } from "../ContextTodoService";
 
-const CircleButton = styled.button`
+const CircleButton: any = styled.button`
   background: #38d9a9;
   &:hover {
     background: #63e6be;
@@ -33,7 +33,7 @@ const CircleButton = styled.button`
   justify-content: center;
 
   transition: 0.125s all ease-in;
-  ${(props) =>
+  ${(props: any) =>
     props.open &&
     css`
       background: #ff6b6b;
@@ -78,24 +78,24 @@ const Input = styled.input`
 
 function ContextTodoCreate() {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
 
   const dispatch = useTodoDispatch();
   const nextId = useTodoNextId();
 
   const handleToggle = () => setOpen(!open);
-  const handleChange = (e) => setValue(e.target.value);
-  const handleSubmit = (e) => {
+  const handleChange = (e: any) => setValue(e.target.value);
+  const handleSubmit = (e: any) => {
     e.preventDefault(); // 새로고침 방지
     dispatch({
-      type: 'CREATE',
+      type: "CREATE",
       todo: {
         id: nextId.current,
         text: value,
         done: false,
       },
     });
-    setValue(''); // input 초기화
+    setValue(""); // input 초기화
     setOpen(false); // open 닫기
     nextId.current += 1;
   };
@@ -105,7 +105,12 @@ function ContextTodoCreate() {
       {open && (
         <InsertFormPositioner>
           <InsertForm onSubmit={handleSubmit}>
-            <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" onChange={handleChange} value={value} />
+            <Input
+              autoFocus
+              placeholder="할 일을 입력 후, Enter 를 누르세요"
+              onChange={handleChange}
+              value={value}
+            />
           </InsertForm>
         </InsertFormPositioner>
       )}

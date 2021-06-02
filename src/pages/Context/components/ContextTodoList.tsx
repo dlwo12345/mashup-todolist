@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import ContextTodoItem from './ContextTodoItem';
-import {useTodoState} from '../ContextTodoService';
+import React from "react";
+import styled from "styled-components";
+import ContextTodoItem from "./ContextTodoItem";
+import { useTodoState } from "../ContextTodoService";
 
 const TodoListBlock = styled.div`
   flex: 1;
@@ -15,7 +15,7 @@ function ContextTodoList() {
 
   return (
     <TodoListBlock>
-      {todos.map((todo) => (
+      {todos.map((todo: any) => (
         <ContextTodoItem key={todo.id} {...todo} />
       ))}
     </TodoListBlock>
