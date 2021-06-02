@@ -7,6 +7,7 @@ const ContextTodoContainer = lazy(() =>
 const RecoilTodoContainer = lazy(() =>
   import("./pages/Recoil/RecoilTodoContainer")
 );
+const MobxTodoContainer = lazy(() => import("./pages/Mobx/MobxTodoContainer"));
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
         <Switch>
           <Route path="/context" component={ContextTodoContainer} />
           <Route path="/recoil" component={RecoilTodoContainer} />
+          <Route path="/mobx" component={MobxTodoContainer} />
           <Redirect path="/" to="/context" />
           <Redirect path="*" to="/" />
         </Switch>
