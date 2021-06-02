@@ -84,7 +84,6 @@ const todoStore = observable({
   },
 
   createTodo(todo: any) {
-    console.log("todo", todo, this.todoState);
     const nextId = this.todoState.length + 1;
     this.todoState = this.todoState.concat({
       ...todo,
