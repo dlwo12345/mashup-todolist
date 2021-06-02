@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { MdAdd } from "react-icons/md";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { createTodo, incrementNextId, nextIdState } from "../MobxTodoService";
@@ -22,7 +22,7 @@ const CircleButton = styled.button`
   justify-content: center;
   font-size: 60px;
   position: absolute;
-  left: 50%;
+  left: 50%;\
   bottom: 0px;
   transform: translate(-50%, 50%);
   color: white;

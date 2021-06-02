@@ -1,8 +1,8 @@
-import React, {useCallback, useState} from 'react';
-import {MdAdd} from 'react-icons/md';
-import {useRecoilValue, useSetRecoilState} from 'recoil';
-import {createTodo, incrementNextId, nextIdState} from '../RecoilTodoService';
-import styled, {css} from 'styled-components';
+import React, { useState } from "react";
+import { MdAdd } from "react-icons/md";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { createTodo, incrementNextId, nextIdState } from "../RecoilTodoService";
+import styled, { css } from "styled-components";
 
 const CircleButton = styled.button`
   background: #38d9a9;
@@ -82,7 +82,7 @@ function RecoilTodoCreate() {
   const nextId = useRecoilValue(nextIdState);
   const emitIncrementNextId = useSetRecoilState(incrementNextId);
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
 
   const handleToggle = () => setOpen(!open);
   const handleChange = (e) => setValue(e.target.value);
@@ -95,11 +95,11 @@ function RecoilTodoCreate() {
         text: value,
         done: false,
       },
-      [],
+      []
     );
     emitIncrementNextId(); // nextId 하나 증가
 
-    setValue(''); // input 초기화
+    setValue(""); // input 초기화
     setOpen(false); // open 닫기
   };
 
@@ -108,7 +108,12 @@ function RecoilTodoCreate() {
       {open && (
         <InsertFormPositioner>
           <InsertForm onSubmit={handleSubmit}>
-            <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" onChange={handleChange} value={value} />
+            <Input
+              autoFocus
+              placeholder="할 일을 입력 후, Enter 를 누르세요"
+              onChange={handleChange}
+              value={value}
+            />
           </InsertForm>
         </InsertFormPositioner>
       )}

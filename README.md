@@ -13,3 +13,5 @@ context로 상태관리 하는것을 recoil로 변경해보면서 recoil 상태 
   > yarn add react-icons
 - recoil
   > yarn add recoil
+- mobx
+  > yarn add mobx mobx-react
