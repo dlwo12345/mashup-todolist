@@ -1,8 +1,8 @@
+import { observer } from "mobx-react";
 import React from "react";
 import styled from "styled-components";
+import todoStore from "../MobxTodoService";
 import MobxTodoItem from "./MobxTodoItem";
-import { todoState } from "../MobxTodoService";
-import { useRecoilValue } from "recoil";
 
 const TodoListBlock = styled.div`
   flex: 1;
@@ -11,16 +11,16 @@ const TodoListBlock = styled.div`
   overflow-y: auto;
 `;
 
-function MobxTodoList() {
-  const todos = useRecoilValue(todoState);
+const MobxTodoList = observer(() => {
+  const todos = todoStore.todoState;
 
   return (
     <TodoListBlock>
-      {todos.map((todo) => (
+      {todos.map((todo: any) => (
         <MobxTodoItem key={todo.id} {...todo} />
       ))}
     </TodoListBlock>
   );
-}
+});
 
 export default React.memo(MobxTodoList);

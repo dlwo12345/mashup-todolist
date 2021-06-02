@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import RecoilTodoItem from './RecoilTodoItem';
-import {todoState} from '../RecoilTodoService';
-import {useRecoilValue} from 'recoil';
+import React from "react";
+import styled from "styled-components";
+import RecoilTodoItem from "./RecoilTodoItem";
+import { todoState } from "../RecoilTodoService";
+import { useRecoilValue } from "recoil";
 
 const TodoListBlock = styled.div`
   flex: 1;

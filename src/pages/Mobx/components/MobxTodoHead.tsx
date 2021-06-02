@@ -1,7 +1,7 @@
+import { observer } from "mobx-react";
 import React from "react";
-import { useRecoilValue } from "recoil";
-import { todoState } from "../MobxTodoService";
 import styled from "styled-components";
+import todoStore from "../MobxTodoService";
 
 const TodoHeadBlock = styled.div`
   padding-top: 48px;
@@ -27,9 +27,9 @@ const TodoHeadBlock = styled.div`
   }
 `;
 
-function MobxTodoHead() {
-  const todos = useRecoilValue(todoState);
-  const undoneTasks = todos.filter((todo) => !todo.done);
+const MobxTodoHead = observer(() => {
+  const todos = todoStore.todoState;
+  const undoneTasks = todos.filter((todo: any) => !todo.done);
 
   const today = new Date();
   const dateString = today.toLocaleDateString("ko-KR", {
@@ -46,6 +46,6 @@ function MobxTodoHead() {
       <div className="tasks-left">할일 {undoneTasks.length}개 남음</div>
     </TodoHeadBlock>
   );
-}
+});
 
 export default React.memo(MobxTodoHead);

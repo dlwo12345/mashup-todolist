@@ -18,8 +18,8 @@ const TodoTemplateBlock = styled.div`
   flex-direction: column;
 `;
 
-function MobxTodoTemplate(props) {
+function RecoilTodoTemplate(props: any) {
   return <TodoTemplateBlock>{props.children}</TodoTemplateBlock>;
 }
 
-export default React.memo(MobxTodoTemplate);
+export default React.memo(RecoilTodoTemplate);

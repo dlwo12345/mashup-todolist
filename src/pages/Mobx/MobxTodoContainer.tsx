@@ -1,8 +1,6 @@
-import React from "react";
 import { createGlobalStyle } from "styled-components";
 import Nav from "../../components/Nav";
 
-import { RecoilRoot } from "recoil";
 import MobxTodoHead from "./components/MobxTodoHead";
 import MobxTodoTemplate from "./components/MobxTodoTemplate";
 import MobxTodoList from "./components/MobxTodoList";
@@ -16,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
 
 const MobxTodoContainer = () => {
   return (
-    <RecoilRoot>
+    <>
       <Nav />
       <GlobalStyle />
       <MobxTodoTemplate>
@@ -24,7 +22,7 @@ const MobxTodoContainer = () => {
         <MobxTodoList />
         <MobxTodoCreate />
       </MobxTodoTemplate>
-    </RecoilRoot>
+    </>
   );
 };
 

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { MdAdd } from "react-icons/md";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { createTodo, incrementNextId, nextIdState } from "../MobxTodoService";
 import styled, { css } from "styled-components";
+import { observer } from "mobx-react";
+import todoStore from "../MobxTodoService";
 
-const CircleButton = styled.button`
+const CircleButton: any = styled.button`
   background: #38d9a9;
   &:hover {
     background: #63e6be;
@@ -34,7 +34,7 @@ const CircleButton = styled.button`
   justify-content: center;
 
   transition: 0.125s all ease-in;
-  ${(props) =>
+  ${(props: any) =>
     props.open &&
     css`
       background: #ff6b6b;
@@ -77,27 +77,22 @@ const Input = styled.input`
   box-sizing: border-box;
 `;
 
-function MobxTodoCreate() {
-  const emitCreateTodo = useSetRecoilState(createTodo);
-  const nextId = useRecoilValue(nextIdState);
-  const emitIncrementNextId = useSetRecoilState(incrementNextId);
+const MobxTodoCreate = observer(() => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
 
   const handleToggle = () => setOpen(!open);
-  const handleChange = (e) => setValue(e.target.value);
+  const handleChange = (e: any) => setValue(e.target.value);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault(); // 새로고침 방지
-    emitCreateTodo(
-      {
-        id: nextId,
-        text: value,
-        done: false,
-      },
-      []
-    );
-    emitIncrementNextId(); // nextId 하나 증가
+
+    todoStore.createTodo({
+      id: todoStore.nextIdState,
+      text: value,
+      done: false,
+    });
+    todoStore.incrementNextId(); // nextId 하나 증가
 
     setValue(""); // input 초기화
     setOpen(false); // open 닫기
@@ -122,6 +117,6 @@ function MobxTodoCreate() {
       </CircleButton>
     </>
   );
-}
+});
 
 export default React.memo(MobxTodoCreate);

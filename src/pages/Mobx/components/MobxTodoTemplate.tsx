@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const TodoTemplateBlock = styled.div`
   width: 512px;
@@ -18,8 +18,8 @@ const TodoTemplateBlock = styled.div`
   flex-direction: column;
 `;
 
-function RecoilTodoTemplate(props) {
+function MobxTodoTemplate(props: any) {
   return <TodoTemplateBlock>{props.children}</TodoTemplateBlock>;
 }
 
-export default React.memo(RecoilTodoTemplate);
+export default React.memo(MobxTodoTemplate);
