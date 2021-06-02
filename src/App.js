@@ -4,14 +4,16 @@ import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
 const ContextTodoContainer = lazy(() =>
   import("./pages/Context/ContextTodoContainer")
 );
-const RecoilPage = lazy(() => import("./pages/Recoil/Container"));
+const RecoilTodoContainer = lazy(() =>
+  import("./pages/Recoil/RecoilTodoContainer")
+);
 function App() {
   return (
     <BrowserRouter>
       <Suspense fallback={<></>}>
         <Switch>
           <Route path="/context" component={ContextTodoContainer} />
-          <Route path="/recoil" component={RecoilPage} />
+          <Route path="/recoil" component={RecoilTodoContainer} />
           <Redirect path="/" to="/context" />
           <Redirect path="*" to="/" />
         </Switch>

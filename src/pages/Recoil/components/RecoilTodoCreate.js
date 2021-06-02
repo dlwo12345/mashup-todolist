@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import {MdAdd} from 'react-icons/md';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
-import {createTodo, incrementNextId, nextIdState} from '../state';
+import {createTodo, incrementNextId, nextIdState} from '../RecoilTodoService';
 import styled, {css} from 'styled-components';
 
 const CircleButton = styled.button`

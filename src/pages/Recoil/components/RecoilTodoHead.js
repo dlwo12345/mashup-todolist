@@ -1,6 +1,6 @@
 import React from 'react';
 import {useRecoilValue} from 'recoil';
-import {todoState} from '../state';
+import {todoState} from '../RecoilTodoService';
 import styled from 'styled-components';
 
 const TodoHeadBlock = styled.div`
