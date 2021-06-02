@@ -1,7 +1,7 @@
-import React from 'react';
-import {useRecoilValue} from 'recoil';
-import {todoState} from '../RecoilTodoService';
-import styled from 'styled-components';
+import React from "react";
+import { useRecoilValue } from "recoil";
+import { todoState } from "../RecoilTodoService";
+import styled from "styled-components";
 
 const TodoHeadBlock = styled.div`
   padding-top: 48px;
@@ -32,8 +32,12 @@ function RecoilTodoHead() {
   const undoneTasks = todos.filter((todo) => !todo.done);
 
   const today = new Date();
-  const dateString = today.toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'});
-  const dayName = today.toLocaleDateString('ko-KR', {weekday: 'long'});
+  const dateString = today.toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const dayName = today.toLocaleDateString("ko-KR", { weekday: "long" });
 
   return (
     <TodoHeadBlock>

@@ -1,8 +1,8 @@
-import React, {useCallback} from 'react';
-import styled, {css} from 'styled-components';
-import {MdDone, MdDelete} from 'react-icons/md';
-import {useSetRecoilState} from 'recoil';
-import {toggleTodo, removeTodo} from '../RecoilTodoService';
+import React, { useCallback } from "react";
+import styled, { css } from "styled-components";
+import { MdDone, MdDelete } from "react-icons/md";
+import { useSetRecoilState } from "recoil";
+import { toggleTodo, removeTodo } from "../RecoilTodoService";
 
 const Remove = styled.div`
   display: flex;
@@ -29,7 +29,7 @@ const TodoItemBlock = styled.div`
   }
 `;
 
-const CheckCircle = styled.div`
+const CheckCircle: any = styled.div`
   width: 32px;
   height: 32px;
   border-radius: 16px;
@@ -40,7 +40,7 @@ const CheckCircle = styled.div`
   justify-content: center;
   margin-right: 20px;
   cursor: pointer;
-  ${(props) =>
+  ${(props: any) =>
     props.done &&
     css`
       border: 1px solid #38d9a9;
@@ -48,18 +48,18 @@ const CheckCircle = styled.div`
     `}
 `;
 
-const Text = styled.div`
+const Text: any = styled.div`
   flex: 1;
   font-size: 21px;
   color: #495057;
-  ${(props) =>
+  ${(props: any) =>
     props.done &&
     css`
       color: #ced4da;
     `}
 `;
 
-function RecoilTodoItem({id, done, text}) {
+function RecoilTodoItem({ id, done, text }: any) {
   const emitToggleTodo = useSetRecoilState(toggleTodo);
   const emitRemoveTodo = useSetRecoilState(removeTodo);
 
