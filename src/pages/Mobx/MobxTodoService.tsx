@@ -1,6 +1,6 @@
 import { action, makeAutoObservable, makeObservable, observable } from "mobx";
 
-type Itodo = {
+export type Itodo = {
   id: number;
   text: string;
   done: boolean;
@@ -74,16 +74,16 @@ const todoStore = observable({
   incrementNextId() {
     this.nextIdState++;
   },
-  toggleTodo(id: any) {
-    this.todoState = this.todoState.map((todo: any) =>
+  toggleTodo(id: number) {
+    this.todoState = this.todoState.map((todo: Itodo) =>
       todo.id === id ? { ...todo, done: !todo.done } : todo
     );
   },
-  removeTodo(id: any) {
-    this.todoState = this.todoState.filter((todo: any) => todo.id !== id);
+  removeTodo(id: number) {
+    this.todoState = this.todoState.filter((todo: Itodo) => todo.id !== id);
   },
 
-  createTodo(todo: any) {
+  createTodo(todo: Itodo) {
     const nextId = this.todoState.length + 1;
     this.todoState = this.todoState.concat({
       ...todo,

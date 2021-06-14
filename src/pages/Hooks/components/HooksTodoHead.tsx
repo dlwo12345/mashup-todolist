@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Itodo } from "../HooksTodoService";
 
 const TodoHeadBlock = styled.div`
   padding-top: 48px;
@@ -26,11 +27,11 @@ const TodoHeadBlock = styled.div`
 `;
 
 interface HooksTodoHeadProps {
-  todos: any;
+  todos: Itodo[];
 }
 
 const HooksTodoHead = ({ todos }: HooksTodoHeadProps) => {
-  const undoneTasks = todos.filter((todo: any) => !todo.done);
+  const undoneTasks = todos.filter((todo) => !todo.done);
 
   const today = new Date();
   const dateString = today.toLocaleDateString("ko-KR", {

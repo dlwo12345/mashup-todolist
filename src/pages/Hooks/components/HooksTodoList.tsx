@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import HooksTodoItem from "./HooksTodoItem";
+import { Itodo } from "../HooksTodoService";
 
 const TodoListBlock = styled.div`
   flex: 1;
@@ -10,9 +11,9 @@ const TodoListBlock = styled.div`
 `;
 
 interface HooksTodoListProps {
-  todos: any;
-  toggleTodo: any;
-  removeTodo: any;
+  todos: Itodo[];
+  toggleTodo: (id: number) => void;
+  removeTodo: (id: number) => void;
 }
 
 const HooksTodoList = ({
@@ -22,12 +23,12 @@ const HooksTodoList = ({
 }: HooksTodoListProps) => {
   return (
     <TodoListBlock>
-      {todos.map((todo: any) => (
+      {todos.map((todo) => (
         <HooksTodoItem
           toggleTodo={toggleTodo}
           removeTodo={removeTodo}
           key={todo.id}
-          {...todo}
+          todo={todo}
         />
       ))}
     </TodoListBlock>

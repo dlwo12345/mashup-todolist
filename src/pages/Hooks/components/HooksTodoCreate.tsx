@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { MdAdd } from "react-icons/md";
 import styled, { css } from "styled-components";
+import { Itodo } from "../HooksTodoService";
 
 const CircleButton: any = styled.button`
   background: #38d9a9;
@@ -76,9 +77,9 @@ const Input = styled.input`
 `;
 
 interface HooksTodoCreateProps {
-  nextId: any;
-  createTodo: any;
-  incrementNextId: any;
+  nextId: number;
+  createTodo: (todo: Itodo) => void;
+  incrementNextId: () => void;
 }
 
 const HooksTodoCreate = ({

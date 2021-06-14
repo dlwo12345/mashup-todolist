@@ -1,6 +1,7 @@
-import React, { useCallback } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import { MdDone, MdDelete } from "react-icons/md";
+import { Itodo } from "../HooksTodoService";
 
 const Remove = styled.div`
   display: flex;
@@ -58,34 +59,30 @@ const Text: any = styled.div`
 `;
 
 interface HooksTodoItemProps {
-  toggleTodo: any;
-  removeTodo: any;
-  id: any;
-  done: any;
-  text: any;
+  toggleTodo: (id: number) => void;
+  removeTodo: (id: number) => void;
+  todo: Itodo;
 }
 
 const HooksTodoItem = ({
   toggleTodo,
   removeTodo,
-  id,
-  done,
-  text,
+  todo,
 }: HooksTodoItemProps) => {
   const handleToggle = () => {
-    toggleTodo(id);
+    toggleTodo(todo.id);
   };
 
   const handleRemove = () => {
-    removeTodo(id);
+    removeTodo(todo.id);
   };
 
   return (
     <TodoItemBlock>
-      <CheckCircle done={done} onClick={handleToggle}>
-        {done && <MdDone />}
+      <CheckCircle done={todo.done} onClick={handleToggle}>
+        {todo.done && <MdDone />}
       </CheckCircle>
-      <Text done={done}>{text}</Text>
+      <Text done={todo.done}>{todo.text}</Text>
       <Remove onClick={handleRemove}>
         <MdDelete />
       </Remove>

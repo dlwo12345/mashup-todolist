@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type Itodo = {
+export type Itodo = {
   id: number;
   text: string;
   done: boolean;
@@ -37,7 +37,7 @@ export const useTodo = () => {
     setNextIdState(nextIdState + 1);
   };
 
-  const toggleTodo = (id: any) => {
+  const toggleTodo = (id: number) => {
     setTodoState((prevState) =>
       prevState.map((todo: any) =>
         todo.id === id ? { ...todo, done: !todo.done } : todo
@@ -45,13 +45,13 @@ export const useTodo = () => {
     );
   };
 
-  const removeTodo = (id: any) => {
+  const removeTodo = (id: number) => {
     setTodoState((prevState) =>
       prevState.filter((todo: any) => todo.id !== id)
     );
   };
 
-  const createTodo = (todo: any) => {
+  const createTodo = (todo: Itodo) => {
     const nextId = todoState.length + 1;
     setTodoState((prevState) =>
       prevState.concat({
