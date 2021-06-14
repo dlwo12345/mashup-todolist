@@ -18,6 +18,11 @@ const nav = () => (
         mobx
       </NavLink>
     </li>
+    <li>
+      <NavLink activeStyle={{ color: "red" }} to={`/hooks`}>
+        hooks
+      </NavLink>
+    </li>
   </ul>
 );
 
