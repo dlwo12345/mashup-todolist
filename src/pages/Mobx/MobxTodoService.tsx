@@ -1,4 +1,4 @@
-import { action, makeAutoObservable, makeObservable, observable } from "mobx";
+import { observable } from "mobx";
 
 export type Itodo = {
   id: number;
