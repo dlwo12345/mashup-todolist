@@ -23,6 +23,11 @@ const nav = () => (
         hooks
       </NavLink>
     </li>
+    <li>
+      <NavLink activeStyle={{ color: "red" }} to={`/redux`}>
+        redux
+      </NavLink>
+    </li>
   </ul>
 );
 

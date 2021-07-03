@@ -11,6 +11,9 @@ const MobxTodoContainer = lazy(() => import("./pages/Mobx/MobxTodoContainer"));
 const HooksTodoContainer = lazy(
   () => import("./pages/Hooks/HooksTodoContainer")
 );
+const ReduxTodoContainer = lazy(
+  () => import("./pages/Redux/ReduxTodoContainer")
+);
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +23,7 @@ function App() {
           <Route path="/recoil" component={RecoilTodoContainer} />
           <Route path="/mobx" component={MobxTodoContainer} />
           <Route path="/hooks" component={HooksTodoContainer} />
+          <Route path="/redux" component={ReduxTodoContainer} />
           <Redirect path="/" to="/context" />
           <Redirect path="*" to="/" />
         </Switch>
