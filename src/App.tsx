@@ -1,5 +1,8 @@
 import { lazy, Suspense } from "react";
 import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
+import { createStore } from "redux";
+import { rootReducer } from "./pages/Redux/ReduxTodoContainer";
+import { Provider } from "react-redux"
 
 const ContextTodoContainer = lazy(
   () => import("./pages/Context/ContextTodoContainer")
@@ -14,21 +17,26 @@ const HooksTodoContainer = lazy(
 const ReduxTodoContainer = lazy(
   () => import("./pages/Redux/ReduxTodoContainer")
 );
+
+export const store = createStore(rootReducer);
 function App() {
   return (
-    <BrowserRouter>
-      <Suspense fallback={<></>}>
-        <Switch>
-          <Route path="/context" component={ContextTodoContainer} />
-          <Route path="/recoil" component={RecoilTodoContainer} />
-          <Route path="/mobx" component={MobxTodoContainer} />
-          <Route path="/hooks" component={HooksTodoContainer} />
-          <Route path="/redux" component={ReduxTodoContainer} />
-          <Redirect path="/" to="/context" />
-          <Redirect path="*" to="/" />
-        </Switch>
-      </Suspense>
-    </BrowserRouter>
+    <Provider store={store}>
+
+      <BrowserRouter>
+        <Suspense fallback={<></>}>
+          <Switch>
+            <Route path="/context" component={ContextTodoContainer} />
+            <Route path="/recoil" component={RecoilTodoContainer} />
+            <Route path="/mobx" component={MobxTodoContainer} />
+            <Route path="/hooks" component={HooksTodoContainer} />
+            <Route path="/redux" component={ReduxTodoContainer} />
+            <Redirect path="/" to="/context" />
+            <Redirect path="*" to="/" />
+          </Switch>
+        </Suspense>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
