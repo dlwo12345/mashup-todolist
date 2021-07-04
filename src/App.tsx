@@ -3,6 +3,7 @@ import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { createStore } from "redux";
 import { rootReducer } from "./pages/Redux/ReduxTodoContainer";
 import { Provider } from "react-redux"
+import { composeWithDevTools } from 'redux-devtools-extension'; // 리덕스 개발자 도구
 
 const ContextTodoContainer = lazy(
   () => import("./pages/Context/ContextTodoContainer")
@@ -18,7 +19,8 @@ const ReduxTodoContainer = lazy(
   () => import("./pages/Redux/ReduxTodoContainer")
 );
 
-export const store = createStore(rootReducer);
+export const store = createStore(rootReducer, composeWithDevTools());
+
 function App() {
   return (
     <Provider store={store}>
