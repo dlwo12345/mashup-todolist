@@ -1,3 +1,5 @@
+import { Action, createAction, handleActions } from "redux-actions";
+
 export type Itodo = {
   id: number;
   text: string;
@@ -27,6 +29,9 @@ const initialTodos: Itodo[] = [
   },
 ];
 
+
+
+
 // 초기값
 const initialState = {
   todos: initialTodos,
@@ -40,51 +45,30 @@ const REMOVE_TODO = "REMOVE_TODO";
 const CREATE_TODO = "CREATE_TODO";
 
 // 액션 생성함수
-export const incrementNextId = () => ({ type: INCREASE_NEXT_ID });
-export const toggleTodo = (id: number) => ({
-  type: TOGGLE_TODO,
-  payload: id
-});
-export const removeTodo = (id: number) => ({
-  type: REMOVE_TODO,
-  payload: id
-});
-
-export const createTodo = (todo: Itodo) => ({
-  type: CREATE_TODO,
-  payload: todo
-});
+export const incrementNextId = createAction(INCREASE_NEXT_ID);
+export const toggleTodo = createAction(TOGGLE_TODO, (id: number) => ({ id }));
+export const removeTodo = createAction(REMOVE_TODO, (id: number) => ({ id }));
+export const createTodo = createAction(CREATE_TODO, (todo: Itodo) => ({ todo }));
 
 // 리듀서
-export const TodosReducer = (state = initialState, action: any) => {
-  switch (action.type) {
-    case INCREASE_NEXT_ID:
-      return {
-        ...state,
-        nextId: state.nextId + 1
-      }
-    case TOGGLE_TODO:
-      return {
-        ...state,
-        todos: state.todos.map((todo: any) =>
-          todo.id === action.payload ? { ...todo, done: !todo.done } : todo
-        )
-      }
-    case REMOVE_TODO:
-      return {
-        ...state,
-        todos: state.todos.filter((todo: any) => todo.id !== action.payload)
-      }
-    case CREATE_TODO:
-      return {
-        ...state,
-        todos: state.todos.concat({
-          ...action.payload,
-          id: state.nextId,
-        })
-      }
-    default:
-      return state;
-  }
-}
+export const TodosReducer = handleActions<typeof initialState, any>({
+  [INCREASE_NEXT_ID]: (state) => ({ ...state, nextId: state.nextId + 1 }),
+  [TOGGLE_TODO]: (state, action: Action<{ id: number }>) => {
+    return { ...state, todos: state.todos.map((todo: any) => todo.id === action.payload.id ? { ...todo, done: !todo.done } : todo) };
+  },
+  [REMOVE_TODO]: (state, action: Action<{ id: number }>) => ({
+    ...state, todos: state.todos.filter((todo: any) => todo.id !== action.payload.id)
+  }),
+  [CREATE_TODO]: (state, action: Action<{ todo: Itodo }>) => ({
+    ...state,
+    todos: state.todos.concat({
+      ...action.payload.todo,
+      id: state.nextId,
+    })
+  }),
+}, initialState);
+
+
+
+
 
