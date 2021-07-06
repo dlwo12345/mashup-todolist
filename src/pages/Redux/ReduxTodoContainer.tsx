@@ -11,6 +11,7 @@ import {
   incrementNextId,
   TodosReducer,
   toggleTodo,
+  toggleTodoAsync,
   removeTodo,
   createTodo,
   Itodo,
@@ -38,7 +39,10 @@ const ReduxTodoContainer = () => {
     (state: RootReducerType) => state.TodosReducer.nextId
   );
   const onIncrementNextId = () => dispatch(incrementNextId());
-  const onToggleTodo = (id: number) => dispatch(toggleTodo(id));
+
+  // const onToggleTodo = (id: number) => dispatch(toggleTodo(id));
+  const onToggleTodo = (id: number) => dispatch(toggleTodoAsync(id));
+  
   const onRemoveTodo = (id: number) => dispatch(removeTodo(id));
   const onCreateTodo = (todo: Itodo) => dispatch(createTodo(todo));
 

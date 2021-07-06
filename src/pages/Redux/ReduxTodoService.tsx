@@ -49,6 +49,12 @@ export const createTodo = createAction(CREATE_TODO, (todo: Itodo) => ({
   todo,
 }));
 
+export const toggleTodoAsync = (id: number) => (dispatch: any) => {
+  setTimeout(() => {
+    dispatch(toggleTodo(id));
+  }, 1000);
+};
+
 // 리듀서
 export const TodosReducer = handleActions<typeof initialState, any>(
   {
