@@ -29,13 +29,10 @@ const initialTodos: Itodo[] = [
   },
 ];
 
-
-
-
 // 초기값
 const initialState = {
   todos: initialTodos,
-  nextId: initialTodos.length + 1
+  nextId: initialTodos.length + 1,
 };
 
 // 액션 타입
@@ -48,27 +45,31 @@ const CREATE_TODO = "CREATE_TODO";
 export const incrementNextId = createAction(INCREASE_NEXT_ID);
 export const toggleTodo = createAction(TOGGLE_TODO, (id: number) => ({ id }));
 export const removeTodo = createAction(REMOVE_TODO, (id: number) => ({ id }));
-export const createTodo = createAction(CREATE_TODO, (todo: Itodo) => ({ todo }));
+export const createTodo = createAction(CREATE_TODO, (todo: Itodo) => ({
+  todo,
+}));
 
 // 리듀서
-export const TodosReducer = handleActions<typeof initialState, any>({
-  [INCREASE_NEXT_ID]: (state) => ({ ...state, nextId: state.nextId + 1 }),
-  [TOGGLE_TODO]: (state, action: Action<{ id: number }>) => {
-    return { ...state, todos: state.todos.map((todo: any) => todo.id === action.payload.id ? { ...todo, done: !todo.done } : todo) };
+export const TodosReducer = handleActions<typeof initialState, any>(
+  {
+    [INCREASE_NEXT_ID]: (state) => ({ ...state, nextId: state.nextId + 1 }),
+    [TOGGLE_TODO]: (state, action: Action<{ id: number }>) => ({
+      ...state,
+      todos: state.todos.map((todo: any) =>
+        todo.id === action.payload.id ? { ...todo, done: !todo.done } : todo
+      ),
+    }),
+    [REMOVE_TODO]: (state, action: Action<{ id: number }>) => ({
+      ...state,
+      todos: state.todos.filter((todo: any) => todo.id !== action.payload.id),
+    }),
+    [CREATE_TODO]: (state, action: Action<{ todo: Itodo }>) => ({
+      ...state,
+      todos: state.todos.concat({
+        ...action.payload.todo,
+        id: state.nextId,
+      }),
+    }),
   },
-  [REMOVE_TODO]: (state, action: Action<{ id: number }>) => ({
-    ...state, todos: state.todos.filter((todo: any) => todo.id !== action.payload.id)
-  }),
-  [CREATE_TODO]: (state, action: Action<{ todo: Itodo }>) => ({
-    ...state,
-    todos: state.todos.concat({
-      ...action.payload.todo,
-      id: state.nextId,
-    })
-  }),
-}, initialState);
-
-
-
-
-
+  initialState
+);
