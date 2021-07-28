@@ -10,7 +10,6 @@ import { combineReducers } from "redux";
 import {
   incrementNextId,
   TodosReducer,
-  toggleTodo,
   toggleTodoAsync,
   removeTodo,
   createTodo,

@@ -1,10 +1,8 @@
 import { lazy, Suspense } from "react";
 import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
-import { applyMiddleware, createStore } from "redux";
 import { rootReducer } from "./pages/Redux/ReduxTodoContainer";
 import { Provider } from "react-redux";
-import { composeWithDevTools } from "redux-devtools-extension"; // 리덕스 개발자 도구
-import ReduxThunk from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
 
 const ContextTodoContainer = lazy(
   () => import("./pages/Context/ContextTodoContainer")
@@ -20,10 +18,11 @@ const ReduxTodoContainer = lazy(
   () => import("./pages/Redux/ReduxTodoContainer")
 );
 
-export const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(ReduxThunk))
-);
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware()],
+  devTools: true,
+});
 
 function App() {
   return (
