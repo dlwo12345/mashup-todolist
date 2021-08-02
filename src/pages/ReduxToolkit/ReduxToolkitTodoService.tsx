@@ -61,7 +61,6 @@ export const reduxToolkitTodosSlice = createSlice({
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
     createTodo(state, action) {
-      console.log("state", state, action);
       state.todos = state.todos.concat({
         ...action.payload,
         id: state.nextId,
