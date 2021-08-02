@@ -1,8 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
-import { rootReducer } from "./pages/Redux/ReduxTodoContainer";
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
+import { store } from "./store";
 
 const ContextTodoContainer = lazy(
   () => import("./pages/Context/ContextTodoContainer")
@@ -17,12 +16,9 @@ const HooksTodoContainer = lazy(
 const ReduxTodoContainer = lazy(
   () => import("./pages/Redux/ReduxTodoContainer")
 );
-
-const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware()],
-  devTools: true,
-});
+const ReduxToolkitTodoContainer = lazy(
+  () => import("./pages/ReduxToolkit/ReduxToolkitTodoContainer")
+);
 
 function App() {
   return (
@@ -35,6 +31,7 @@ function App() {
             <Route path="/mobx" component={MobxTodoContainer} />
             <Route path="/hooks" component={HooksTodoContainer} />
             <Route path="/redux" component={ReduxTodoContainer} />
+            <Route path="/reduxtoolkit" component={ReduxToolkitTodoContainer} />
             <Redirect path="/" to="/context" />
             <Redirect path="*" to="/" />
           </Switch>

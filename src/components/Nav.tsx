@@ -28,6 +28,11 @@ const nav = () => (
         redux
       </NavLink>
     </li>
+    <li>
+      <NavLink activeStyle={{ color: "red" }} to={`/reduxtoolkit`}>
+        redux-toolkit
+      </NavLink>
+    </li>
   </ul>
 );
 

@@ -6,21 +6,15 @@ import ReduxTodoTemplate from "./components/ReduxTodoTemplate";
 import ReduxTodoList from "./components/ReduxTodoList";
 import ReduxTodoCreate from "./components/ReduxTodoCreate";
 import { useDispatch, useSelector } from "react-redux";
-import { combineReducers } from "redux";
+import { RootReducerType } from "../../store";
+
 import {
   incrementNextId,
-  TodosReducer,
   toggleTodoAsync,
   removeTodo,
   createTodo,
   Itodo,
 } from "./ReduxTodoService";
-
-export const rootReducer = combineReducers({
-  TodosReducer,
-});
-
-type RootReducerType = ReturnType<typeof rootReducer>;
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -32,16 +26,16 @@ const ReduxTodoContainer = () => {
   const dispatch = useDispatch();
 
   const todoState = useSelector(
-    (state: RootReducerType) => state.TodosReducer.todos
+    (state: RootReducerType) => state.reduxTodos.todos
   );
   const nextIdState = useSelector(
-    (state: RootReducerType) => state.TodosReducer.nextId
+    (state: RootReducerType) => state.reduxTodos.nextId
   );
   const onIncrementNextId = () => dispatch(incrementNextId());
 
   // const onToggleTodo = (id: number) => dispatch(toggleTodo(id));
   const onToggleTodo = (id: number) => dispatch(toggleTodoAsync(id));
-  
+
   const onRemoveTodo = (id: number) => dispatch(removeTodo(id));
   const onCreateTodo = (todo: Itodo) => dispatch(createTodo(todo));
 

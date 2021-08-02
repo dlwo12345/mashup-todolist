@@ -56,7 +56,7 @@ export const toggleTodoAsync = (id: number) => (dispatch: any) => {
 };
 
 // 리듀서
-export const TodosReducer = handleActions<typeof initialState, any>(
+export const reduxTodosReducer = handleActions<typeof initialState, any>(
   {
     [INCREASE_NEXT_ID]: (state) => ({ ...state, nextId: state.nextId + 1 }),
     [TOGGLE_TODO]: (state, action: Action<{ id: number }>) => ({
